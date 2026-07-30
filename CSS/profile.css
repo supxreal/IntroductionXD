@@ -1,0 +1,311 @@
+/* ให้ body เป็นกรอบอ้างอิง */
+body{ position: relative; margin: 0; }
+
+/* พื้นหลังหลังสุดทั้งหน้าจอ */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;           /* อยู่หลังทุกอย่าง */
+  pointer-events: none;  /* กันไม่ให้บังการคลิก */
+  background: linear-gradient(#f4f9fc, #dce5f9);
+  min-height: 100dvh;    /* รองรับมือถือยุคใหม่ */
+}
+
+
+#top-space2 {
+    margin-top: 75px;
+}
+
+.pid {
+  display: block;
+  height: 15.57px;
+}
+#main-topic {
+  text-align: center;
+}
+#last-topic {
+  text-align: center;
+  color: #6b7280;
+}
+ul {
+  padding-left: 2rem;
+}
+.content-link {
+    color: #428df6 !important;
+}
+
+
+:root{
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #6b7280;
+  --card: rgba(255, 255, 255, 0.613);
+  --border: rgba(0,0,0,0.08);
+  --radius: 16px;
+  --maxw: 1200px;
+}
+
+main {
+    --gap: clamp(1rem, 2vw, 2rem);
+}
+.indent-p {
+  text-indent:  2rem;
+}
+/* Reset-ish */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+        margin: 0;
+        font-family:"Noto Sans Thai", sans-serif;
+        color: var(--fg);
+        background: var(--bg);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-size: clamp(15px, 1.2vw + 10px, 18px);
+        }
+        img { max-width: 100%; height: auto; display: block; border-radius: 12px; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover {
+          color: #7d8598;
+        }
+        
+/* ---------- Main Layout (Grid + Areas) ---------- */
+.container{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;           /* left | right */
+  gap: var(--gap);
+  align-items: start;
+  grid-template-areas: "left right";           /* เดสก์ท็อป: ซ้ายก่อน ขวาทีหลัง */
+}
+
+.visually-hidden{
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); border: 0;
+}
+
+.col-left  { grid-area: left;  display: grid; gap: var(--gap); }
+.col-right { grid-area: right; padding: 0; }
+
+/* ---------- Card Style (All) ---------- */
+.card{
+  /* ของเดิม */
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1.2rem, 2vw, 1.25rem);
+
+  /* เงาใหม่ (เลือกใช้แทนบรรทัดเงาเดิม) */
+  box-shadow:
+    0 0.5px 0 rgba(35, 35, 46,0.03),          /* เส้นบางๆ บนผิว */
+    0 12px 28px -12px rgba(35, 35, 46, 0.03),  /* เงาหลักกดลงล่าง */
+    0 24px 60px -34px rgba(35, 35, 46, 0.06);  /* เงาฟุ้งรองลงมา */
+}
+
+.card h3{
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
+  letter-spacing: 0.2px;
+}
+
+/* กล่องข้อมูลเกี่ยวกับให้เนียนกับการ์ดอื่น */
+.col-right.card h3{
+  margin-top: 0.55rem;
+}
+.col-right.card .inline-photo{ margin: 0.75rem 0; }
+.col-right.card .hairline{ margin: 0.75rem 0; }
+
+/* ---------- Profile 2 pics (Overlay) ---------- */
+.portrait{
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+.portrait img{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;                     /* ปรับตามอัตราส่วนรูปคนจริงได้ */
+  object-fit: cover;
+  object-position: center top;
+  border-radius: calc(var(--radius) + 4px);
+  display: block;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+}
+.portrait figcaption{
+  grid-column: 1 / -1;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+/* ---------- Picture Work ---------- */
+.workshots{
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.workshots img{
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: inline-flex;
+}
+
+/* ----------- Sub-Element ---------- */
+.inline-photo img{
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.muted {
+  display: none;
+}
+
+.hairline{
+  border: 0;
+  border-top: 1px solid #979fae;
+  margin-top: 4rem;
+}
+
+
+/* ---------- Responsive ---------- */
+
+/* จอแคบ: ให้ "ข้อมูลเกี่ยวกับ" (right) ขึ้นก่อน แล้วค่อย "ซ้าย" */
+@media (max-width: 900px){
+  .container{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "right"   /* บทเกี่ยวกับมาก่อน */
+      "left";   /* ตามด้วย รูป/ทักษะ/ผลงาน */
+  }
+  .workshots{ grid-template-columns: 1fr; }   /* ภาพผลงานเรียงลงเพื่ออ่านง่าย */
+}
+
+@media (orientation: portrait){
+  .portrait{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 320px){
+  .portrait{ grid-template-columns: 1fr; }
+}
+
+
+
+
+/* === Page Enter Animations (no structure change) ===================== */
+
+/* เคารพผู้ใช้ที่ลดการเคลื่อนไหว */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* คีย์เฟรมหลัก */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px) }
+  to   { opacity: 1; transform: translateY(0) }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(.98) }
+  to   { opacity: 1; transform: scale(1) }
+}
+@keyframes lineGrow {
+  from { transform: scaleX(0); opacity: 0 }
+  to   { transform: scaleX(1); opacity: 1 }
+}
+
+/* ทริกเล็กๆ: จะช่วยให้ GPU เตรียมทรานส์ฟอร์มไว้ลื่นขึ้น */
+#content, .container, .card, .portrait img, .workshots img, .hairline {
+  will-change: opacity, transform;
+}
+
+/* 1) เฟดอินทั้งเพจเบาๆ */
+#content {
+  animation: fadeIn 600ms ease-out both;
+}
+
+/* 2) กล่องคอนเทนเนอร์เด้งนุ่มๆ */
+.container {
+  animation: scaleIn 600ms cubic-bezier(.2,.6,.2,1) both;
+  animation-delay: 60ms;
+}
+
+/* 3) คอลัมน์ขวา (โปรไฟล์หลัก) โผล่ขึ้นก่อน เพื่ออ่านลื่น */
+.col-right.card {
+  animation: rise 680ms cubic-bezier(.2,.6,.2,1) both;
+  animation-delay: 120ms;
+}
+
+/* 4) คอลัมน์ซ้าย (รูป/ทักษะ/ผลงาน) ตามมาทีละชั้นแบบสเต็ป */
+.col-left > * {
+  opacity: 0;
+  animation: rise 720ms cubic-bezier(.2,.6,.2,1) both;
+}
+.col-left > :nth-child(1) { animation-delay: 180ms; } /* รูป */
+.col-left > :nth-child(2) { animation-delay: 260ms; } /* ทักษะ */
+.col-left > :nth-child(3) { animation-delay: 340ms; } /* ผลงาน */
+
+/* 5) รูปโปรไฟล์ 2 ใบ: สลับจังหวะนิดๆ ให้ดูมีชีวิต */
+.portrait img:nth-of-type(1) {
+  animation: rise 700ms cubic-bezier(.2,.6,.2,1) both;
+  animation-delay: 220ms;
+}
+.portrait img:nth-of-type(2) {
+  animation: rise 700ms cubic-bezier(.2,.6,.2,1) both;
+  animation-delay: 280ms;
+}
+
+/* 6) ภาพตัวอย่างผลงาน (ถ้ามี 2 ใบ) ก็สลับจังหวะเช่นกัน */
+.workshots img:nth-of-type(1) {
+  animation: rise 720ms cubic-bezier(.2,.6,.2,1) both;
+  animation-delay: 380ms;
+}
+.workshots img:nth-of-type(2) {
+  animation: rise 720ms cubic-bezier(.2,.6,.2,1) both;
+  animation-delay: 430ms;
+}
+
+/* 7) เส้นคั่นค่อยๆ “วาด” จากซ้ายไปขวา */
+.hairline {
+  transform-origin: left center;
+  animation: lineGrow 600ms ease-out both;
+  animation-delay: 300ms;
+}
+
+/* หมายเหตุ:
+   - ทุกอย่างด้านบน target จาก class/id เดิมทั้งหมด
+   - ไม่มีการเพิ่ม/ย้ายโครงสร้างใดๆ จึงไม่กระทบ responsive layout ของคุณ
+   - ถ้าบางส่วนมี animation อยู่แล้ว ก็ใช้ delay ปรับไม่ให้ชนกันได้
+*/
+
+/* ตัวเลือก (OPTIONAL): ลดระยะดีเลย์บนจอเล็กให้ไวขึ้นนิด */
+@media (max-width: 900px){
+  .col-left > :nth-child(1) { animation-delay: 120ms; }
+  .col-left > :nth-child(2) { animation-delay: 180ms; }
+  .col-left > :nth-child(3) { animation-delay: 240ms; }
+}
+
+.card{
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.048));
+  /* ถ้าอยากเพิ่มมิติอีกชั้น */
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.059))
+            drop-shadow(0 18px 32px rgba(0,0,0,.10));
+}

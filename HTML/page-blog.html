@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="For Fundamental of Computer" />
+    <meta name="author" content="Develop by Suphawit Yuyong (CSB)" />
+    <meta name="keywords" content="html, css, javascript, web" />
+    <title>Blog Post</title>
+
+    <link rel="stylesheet" href="/CSS/navbar.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="/CSS/blog.css">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+</head>
+<body>
+    <header>
+      <div class="top-head">
+        <h3>Kla Suphawit</h3>
+        <p>Computer Science (CSB)</p>
+      </div>
+
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+          <i class='bx bx-menu' id="menuicon"></i>
+          <i class='bx bx-x' id="closeicon"></i>
+        </label>
+
+      <nav class="navbar">
+        <a class="link-text"  href="index.html" >Profile</a>
+        <a class="link-text"  href="page-video.html">Video Clip</a>
+        <a class="link-text"  href="page-blog.html">Blog Post</a>
+        <a class="link-text"  href="page-tools.html">Tools & Credit</a>
+        <a class="link-text"  href="page-structure.html">Website Structure</a>
+      </nav>
+    </header>
+
+  <!-- ===== Start at here ===== -->
+  <main class="container" role="main">
+    <div id="top-space"></div>
+    <div class="grid">
+
+      <!-- Sidebar -->
+      <aside class="sidebar" aria-labelledby="sidebar-title">
+        <section class="card" aria-labelledby="recent-title">
+          <h3 id="recent-title">โพสต์ล่าสุด</h3>
+          <ul class="list-clean">
+            <li><a href="#blog-1">Apple New Siri</a></li>
+            <li><a href="#blog-2">Microsoft Windows ML</a></li>
+            <li><a href="#blog-3">Old Operating System</a></li>
+          </ul>
+        </section>
+      </aside>
+
+      <!-- Section Article -->
+      <section id="blogpost" class="content" aria-labelledby="blog-title">
+        <h2 id="blog-title">Blog Post</h2>
+
+        <!-- Article 1 -->
+        <article id="blog-1" class="post">
+          <p><strong>"เร่งทดสอบ Siri เวอร์ชันใหม่ ออกแอปแนว ChatGPT ให้พนักงานทดสอบสะดวกมากยิ่งขึ้น"</strong></p>
+          <p class="indent-p">
+            รายงานนี้มาจาก Mark Gurman แห่ง Bloomberg คนเดิม เขาพูดถึงแผนการพัฒนา Siri ใหม่ที่เป็น LLM ซึ่งแอปเปิลประกาศเลื่อนกำหนดอัปเดตไปก่อนหน้านี้
+            และกำลังเร่งเปิดตัวเร็วที่สุดเพื่อให้ตามทันคู่แข่ง Gurman บอกว่าตอนนี้ตัว Siri มีความคืบหน้ามาก แต่แอปเปิลต้องการทดสอบให้มากที่สุด
+            จึงได้ออกแอปเฉพาะเพื่อให้สะดวกขึ้นสำหรับพนักงานแอปเปิล <p class="indent-p">แอปนี้คล้ายกับแอป ChatGPT แต่วิธีการทำงานจะติดต่อไปที่ Siri ใหม่
+            แอปยังมีระบบให้คะแนนความพึงพอใจกับคำตอบแบบ ChatGPT ด้วยข้อมูลใหม่ที่ Gurman รายงานมีเพียงเท่านี้ โดยก่อนหน้านี้มีข่าวว่า Siri ใหม่ใช้วิธีการพัฒนาไปสองทาง
+            คือหนึ่งใช้โมเดล AI ที่แอปเปิลพัฒนาเอง และสองคือใช้โมเดลจากบริษัทเทคโนโลยีอื่น ซึ่งมีความเป็นไปได้สูงว่าคือกูเกิล </p>
+          </p>
+          <div class="media mt-sm">
+            <img src="https://media.licdn.com/dms/image/v2/D5612AQESG2FJJxhq_A/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1721174468162?e=2147483647&v=beta&t=ejmJv5C-BvfzhOhluGrfjogeVIZhZ_R4Tn_f4wmdwU0" alt="Apple Ai Siri">
+          </div>
+          <p class="source-note mt-sm">
+            แหล่งที่มา: <a class="content-link" href="https://www.bloomberg.com/news/articles/2025-09-26/apple-builds-a-chatgpt-like-app-to-help-test-the-revamped-siri" target="_blank" rel="noopener noreferrer">Bloomberg</a>
+          </p>
+        </article>
+
+        <!-- Article 2 -->
+        <article id="blog-2" class="post">
+          <p><strong>"Windows ML รันไทม์สำหรับรันโมเดล AI"</strong></p>
+          <p class="indent-p">
+            ไมโครซอฟท์ประกาศข่าว Windows ML รันไทม์สำหรับรันโมเดล AI บนฮาร์ดแวร์ Windows ที่เปิดตัวในงาน Build 2025 เข้าสถานะ generally available (GA)
+            พร้อมใช้งานระดับโปรดักชัน Windows ML เป็นส่วนหนึ่งของ Windows AI Foundry โดยทำหน้าที่เป็นตัวกลางระหว่างโมเดล AI ฟอร์แมต ONNX กับหน่วยประมวลผลหลายรูปแบบ
+            (CPU, GPU, NPU) เพื่อให้ง่ายต่อการรันโมเดลแบบ local ในเครื่องอย่างมีประสิทธิภาพ โดยไมโครซอฟท์ทำหน้าที่คุยกับ AMD, Intel, NVIDIA, Qualcomm ให้เลยสำหรับนักพัฒนาแอพ
+            มีหน้าที่ส่งโมเดลไปรันผ่าน Windows ML อย่างเดียวปัจจุบันมีแอพดังๆ หลายตัว <p class="indent-p">เช่น Adobe Premiere Pro, Adobe After Effects, McAfee เรียกใช้งานฟีเจอร์ AI ผ่าน Windows ML แล้ว รองรับระบบปฏิบัติการที่เป็น Windows 11 24H2 ขึ้นไป</p>
+          </p>
+          <div class="media mt-sm">
+            <img src="https://www.blognone.com/sites/default/files/news-feature-image/2025/2025-09/windows_ml.webp" alt="Windows ML">
+          </div>
+          <p class="source-note mt-sm">
+            แหล่งที่มา: <a class="content-link" href="https://blogs.windows.com/windowsdeveloper/2025/09/23/windows-ml-is-generally-available-empowering-developers-to-scale-local-ai-across-windows-devices/" target="_blank" rel="noopener noreferrer">Microsoft</a>
+          </p>
+        </article>
+
+        <!-- Article 3 -->
+        <article id="blog-3" class="post">
+          <p><strong>"ระบบปฏิบัติการในยุคเก่าที่สำคัญ DOS และ UNIX"</strong></p>
+          <p class="indent-p">
+            <u>ดอส (DOS) หรือ Disk Operating System</u> เป็นระบบปฏิบัติการบนเครื่องพีซี สำหรับเครื่องไอบีเอ็มหรือ ไอบีเอ็มคอมแพ็ททิเบิล (IBM Compatible) ที่นิยมมากในอดีต ถูกพัฒนาขึ้นในปี ค.ศ. 1980 <br>
+            • เป็นระบบปฏิบัติการแบบผู้ใช้งานคนเดียว (Single User) และ 1 CPU (Singleprocessor) <br>
+            • ทำงานกับ CPU ขนาด 8 บิตและ 16 บิต <br>
+            • รู้จักหน่วยความจำหลักแค่ 640 KB <br>
+            • รองรับการตั้งชื่อแฟ้มข้อมูลขนาด 8 ตัวอักษรและส่วนขยาย 3 ตัวอักษร <br>
+            • ใช้การจัดการหน่วยความจำแบบ Monoprogramming
+          </p>
+          <p class="indent-p">
+            <u>ยูนิกซ์ (UNIX)</u> เป็นระบบปฏิบัติการที่ถูกพัฒนาขึ้นในปี ค.ศ.1969 โดยบริษัท AT&T เพื่อใช้งานกับมินิคอมพิวเตอร์ โดยแรกเริ่มถูกใช้งานเพื่องานวิจัยเพื่อศึกษาในมหาวิทยาลัยเท่านั้น <br>
+            • เป็นระบบปฏิบัติการแบบผู้ใช้งานหลายคน (Multi-User) <br>
+            • สนับสนุนการทำงานหลายงาน (Multitasking) <br>
+            • เป็นระบบปฏิบัติการที่พัฒนาขึ้นด้วยภาษาซี (C) <br>
+            • ไม่ยึดติดอยู่กับฮาร์ดแวร์ จึงสามารถนำไปใช้กับคอมพิวเตอร์ได้เกือบทุกแบบ <br>
+            • มีความสามารถในการเชื่อมต่อกับระบบเครือข่าย <br>
+            • ติดต่อกับผู้ใช้งานผ่านทาง Command line แต่ในปัจจุบันมีการพัฒนาโปรแกรมเป็นลักษณะของ GUI เพื่อให้ใช้งานได้ง่ายขึ้น <br>
+            • ปัจจุบันนิยมนำมาใช้เป็นเครื่องให้บริการประเภทต่างๆ เช่น Web Server
+          </p>
+          <div class="media mt-sm">
+            <img src="/image/pc-1.jpg.webp" alt="DOS OS">
+          </div>
+          <!-- <div class="media mt-sm">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSKclPMC9UHm8r4le4g-ZUS4kE3j3z2LJZmB26N9neSoJCpCuDgkoAGOCZIbLFOS5L7keRZ2CAQxHiKNB9rwi4h3o7pSduwA3ux-5lwCJb8b7gNJvzycbUFw40GKIEeTDAjGCDRrphI91S/s1600/images.png" alt="UNIX OS">
+          </div> -->
+          <p class="source-note mt-sm">
+            แหล่งที่มา: <a class="content-link" class="content-link" href="https://classroom.google.com/c/NzgyNTUwOTE5ODYz/m/NzgyNTUyMDA2NDQ0/details" target="_blank" rel="noopener noreferrer" >Operating System (Classroom NJR)</a>
+          </p>
+        </article>
+
+      </section>
+    </div>
+  </main>
+  <!-- ===== End at here ===== -->
+
+    <!-- Section Contact -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <address class="contact" aria-labelledby="contact-footer-title">
+          <h2 id="contact-footer-title" class="sr-only">Contact</h2>
+          <p>
+            <a href="mailto:tonklav10@gmail.com">Contact Email</a>
+            <span aria-hidden="true">|</span>
+            <a href="#" rel="me">Facebook</a>
+            <span aria-hidden="true">|</span>
+            <a href="#" rel="me">Line</a>
+          </p>
+        </address>
+
+        <small class="copyright">
+          &copy; <time datetime="2025">2025</time> Develop by Suphawit Yuyong
+        </small>
+      </div>
+    </footer>
+</body>
+</html>

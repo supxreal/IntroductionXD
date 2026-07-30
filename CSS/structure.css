@@ -1,0 +1,131 @@
+/* ให้ body เป็นกรอบอ้างอิง */
+body{ position: relative; margin: 0; }
+
+/* พื้นหลังหลังสุดทั้งหน้าจอ */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;           /* อยู่หลังทุกอย่าง */
+  pointer-events: none;  /* กันไม่ให้บังการคลิก */
+  background: linear-gradient(#f4f9fc, #dce5f9);
+  min-height: 100dvh;    /* รองรับมือถือยุคใหม่ */
+}
+
+#top-space-last {
+    margin-top: 90px;
+}
+
+#bottom-space {
+  margin-bottom: 20px;
+}
+
+
+
+/* Reset-ish */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+        margin: 0;
+        font-family:"Noto Sans Thai", sans-serif;
+        color: var(--fg);
+        background: var(--bg);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-size: clamp(15px, 1.2vw + 10px, 18px);
+        }
+        img { max-width: 100%; height: auto; display: block; border-radius: 12px; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover {
+          color: #7d8598;
+        }
+
+
+:root{
+      --bg:#fff; --fg:#0a0a0a; --muted:#6b7280;
+      --card: rgba(255, 255, 255, 0.702); --ring:#e5e7eb;
+      --radius:16px; --maxw:1200px;
+      --space:clamp(16px,3vw,28px);
+      --shadow:0 1px 2px rgba(0,0,0,.05), 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    /* ----------------------------------------------------------------------------------------------------------- */
+    *{box-sizing:border-box}
+    html,body{background:var(--bg); color:var(--fg); font-family:"Noto Sans Thai", sans-serif; line-height:1.54; margin:0}
+    .container{max-width:var(--maxw); margin:auto; padding:var(--space)}
+        /* ----------------------------------------------------------------------------------------------------------- */
+    .page-head h1{margin:0 0 .25rem}
+    .muted{color:var(--muted); margin:.25rem 0 1rem}
+    #search{width:100%; padding:.9rem 1rem; border:1px solid var(--ring); border-radius:12px; outline:none}
+    #search:focus{box-shadow:0 0 0 4px #e8f0ff; border-color:#cfe2ff}
+    .grid{display:grid; gap:clamp(16px,2.5vw,24px)}
+    @media (min-width:900px){ .grid{grid-template-columns:1.2fr 1fr} }
+    .card{background:var(--card); border:1px solid var(--ring); border-radius:var(--radius); padding:clamp(16px,2.5vw,22px); box-shadow:var(--shadow); overflow:hidden}
+    .card h2{margin-top:0}
+
+
+
+    /* Tree */
+    .tree ul{list-style:none; padding-left:1.1rem; margin:.25rem 0}
+    .tree li{position:relative; margin:.15rem 0; padding-left:.6rem}
+    .tree li::before{content:""; position:absolute; left:0; top:.75rem; width:.5rem; height:1px; background:#cfd5db;}
+    .code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.9rem}
+    .pill{display:inline-block; font-size:.72rem; padding:.05rem .5rem; border-radius:999px; border:1px solid var(--ring); background:#fff; color:#334155; margin-left:.35rem}
+
+
+/* ------------------------------------------------------------------------------------------------------------------- */
+    /* Pages */
+    
+    .page{border:1px solid var(--ring); background:#fff; border-radius:14px; padding:12px 14px; margin:10px 0}
+    .page summary{padding-bottom:0.5rem;  cursor:pointer; font-weight:600; list-style:none} /* space here */
+    .page summary::-webkit-details-marker{display:none} 
+    .kv{display:inline; color: #6b7280;  grid-template-columns:110px 1fr; gap:8px; margin:.25rem 0}
+    .tags{display:flex; flex-wrap:wrap; gap:.35rem}
+    .tag{font-size:.75rem; border:1px solid var(--ring); padding:.15rem .5rem; border-radius:999px; background:#fff; font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+
+    /* Reveal */
+    .reveal{opacity:0; transform:translateY(10px); animation:reveal .5s ease forwards}
+    @keyframes reveal{to{opacity:1; transform:none}}
+
+
+
+
+  /* ========= Page Enter Animations (CSS only) ========= */
+
+/* ทั้งหน้าเฟดอิน */
+@keyframes pageFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ยกการ์ด/คอนเทนต์ขึ้นมานิด ๆ พร้อมเฟด */
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(10px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* คอนเทนต์หลักค่อย ๆ โผล่ */
+.container{
+  animation: floatUp .9s cubic-bezier(.22,1,.36,1) .06s both;
+  will-change: opacity, transform;          /* ลื่นขึ้นนิดนึง */
+}
+
+/* การ์ดสองฝั่งโผล่พร้อมกัน */
+.grid > .card{
+  animation: floatUp .9s cubic-bezier(.22,1,.36,1) .10s both;
+}
+
+/* เคารพผู้ใช้ที่ไม่ชอบแอนิเมชัน */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+  body{ opacity: 1 !important; }
+}
+
+
+
+.card {
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.048));
+  /* ถ้าอยากเพิ่มมิติอีกชั้น */
+
+}

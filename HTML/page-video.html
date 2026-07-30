@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="For Fundamental of Computer" />
+    <meta name="author" content="Develop by Suphawit Yuyong (CSB)" />
+    <meta name="keywords" content="html, css, javascript, web" />
+    <title>Video Clip</title>
+
+    <link rel="stylesheet" href="/CSS/navbar.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="/CSS/video.css">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+</head>
+<body>
+    <header>
+      <div class="top-head">
+        <h3>Kla Suphawit</h3>
+        <p>Computer Science (CSB)</p>
+      </div>
+      
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+          <i class='bx bx-menu' id="menuicon"></i>
+          <i class='bx bx-x' id="closeicon"></i>
+        </label>
+
+      <nav class="navbar">
+        <a class="link-text"  href="index.html" >Profile</a>
+        <a class="link-text"  href="page-video.html">Video Clip</a>
+        <a class="link-text"  href="page-blog.html">Blog Post</a>
+        <a class="link-text"  href="page-tools.html">Tools & Credit</a>
+        <a class="link-text"  href="page-structure.html">Website Structure</a>
+      </nav>
+    </header>
+
+    <!-- Start at here -->
+    <main>
+      <div id="top-space" aria-hidden="true"></div>
+
+      <!-- Hero / Video Section -->
+      <section id="video-clip" aria-labelledby="video-title">
+        <div class="container hero-grid">
+          <!-- Text side -->
+          <div class="hero-copy fade-up">
+            <p class="eyebrow">Video Clip • คลิปแนะนำตัว</p>
+            <h2 id="video-title">Introduction</h2>
+            <p class="lead" >
+              สวัสดีผม Suphawit (CSB) — มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ (KMUTNB)<br>
+              วิดีโอนี้สรุปตัวตน สิ่งที่ชอบและความคาดหวังในอนาคตแบบกระชับ ดูจบแล้วรู้จักกันมากขึ้นแน่นอน
+            </p>
+            <ul class="bullets">
+              <li>ระยะเวลา: <span>40~50 วินาที</span></li>
+              <li>ภาษาประกอบวิดีโอ: <span> ไทย (Thai)<span></li>
+            </ul>
+          </div>
+
+          <!-- Video side -->
+          <figure class="video-card fade-up" aria-labelledby="video-figcaption">
+            <div class="ratio">
+              <iframe
+                src="https://www.youtube.com/embed/IucolNGP-Qg?si=Zt1QihnBQlc1UheV"
+                title="YouTube Introduction"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <figcaption id="video-figcaption" class="caption">
+              วิดีโอแนะนำตัวแบบสั้น • ดูได้ทั้งมือถือและเดสก์ท็อป
+            </figcaption>
+          </figure>
+        </div>
+        <div id="last-footer"></div>
+      </section>
+    </main>
+    <!-- End at here -->
+
+
+
+    <!-- Section Contact -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <address class="contact" aria-labelledby="contact-footer-title">
+          <h2 id="contact-footer-title" class="sr-only">Contact</h2>
+          <p>
+            <a href="mailto:tonklav10@gmail.com">Contact Email</a>
+            <span aria-hidden="true">|</span>
+            <a href="#" rel="me">Facebook</a>
+            <span aria-hidden="true">|</span>
+            <a href="#" rel="me">Line</a>
+          </p>
+        </address>
+
+        <small class="copyright">
+          &copy; <time datetime="2025">2025</time> Develop by Suphawit Yuyong
+        </small>
+      </div>
+    </footer>
+</body>
+</html>

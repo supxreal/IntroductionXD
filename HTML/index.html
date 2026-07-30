@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="For Fundamental of Computer" />
+    <meta name="author" content="Develop by Suphawit Yuyong (CSB)" />
+    <meta name="keywords" content="html, css, javascript, web" />
+    <title>Suphawit Website</title>
+
+    <link rel="stylesheet" href="/CSS/navbar.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="/CSS/profile.css">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+</head>
+<body>
+    <header>
+      <div class="top-head">
+        <h3>Kla Suphawit</h3>
+        <p>Computer Science (CSB)</p>
+      </div>
+      
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+          <i class='bx bx-menu' id="menuicon"></i>
+          <i class='bx bx-x' id="closeicon"></i>
+        </label>
+
+      <nav class="navbar">
+        <a class="link-text"  href="index.html" >Profile</a>
+        <a class="link-text"  href="page-video.html">Video Clip</a>
+        <a class="link-text"  href="page-blog.html">Blog Post</a>
+        <a class="link-text"  href="page-tools.html">Tools & Credit</a>
+        <a class="link-text"  href="page-structure.html">Website Structure</a>
+      </nav>
+    </header>
+
+
+    <!-- Start at here -->
+    <main id="content">
+      <div id="top-space2"></div>
+      <section id="profile" aria-labelledby="profile-title" class="container">
+        <h2 id="profile-title" class="visually-hidden">Profile</h2>
+
+        <!-- คอลัมน์ซ้าย: รูป + ทักษะ + ผลงาน -->
+        <div class="col-left">
+          <!-- Picture -->
+          <figure class="portrait">
+            <img
+              src="/image/profile1.jpeg"
+              alt="Suphawit Picture 1"
+              width="320"
+              height="320"
+              loading="lazy"
+            />
+            <img
+              src="/image/profile2.jpeg"
+              alt="Suphawit Picture 2"
+              width="320"
+              height="320"
+              loading="lazy"
+            />
+            <figcaption>Coding for Innovation </figcaption>
+          </figure>
+
+          <!-- Ability -->
+          <aside aria-label="ทักษะ" class="card">
+            <h2><small>ทักษะที่กำลังศึกษา</small></h2>
+            <ul>
+              <li>ภาษา: HTML • CSS • Python • SQL</li>
+              <li>เครื่องมือ: VS Code • IDLE</li>
+              <li>ความสนใจ: Frontend • UI/UX • AI</li>
+            </ul>
+          </aside>
+
+          <!-- Work -->
+          <aside aria-label="ผลงาน" class="card">
+            <h2><small>ผลงานคอมพิวเตอร์</small></h2>
+            <p>
+              Project คำนวณ BMI • BMR • TDEE ด้วย Python (tkinter)
+              เพื่อช่วยประเมินสุขภาพเบื้องต้น
+              <span class="content-link">(<a href="https://drive.google.com/file/d/1UalH6CTcAdvONcczE_KoFRIwvUshDePE/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download</a>)</span>
+            </p>
+            <figure class="workshots">
+              <img src="/image/projectHC2.png" alt="ภาพหน้าจอโปรเจกต์ HealthCal 1" width="400" height="250" loading="lazy" />
+              <img src="/image/projectHC.jpeg" alt="ภาพหน้าจอโปรเจกต์ HealthCal 2" width="400" height="250" loading="lazy" />
+              <figcaption id="last-topic">รูปภาพผลงานตัวอย่าง</figcaption>
+            </figure>
+          </aside>
+        </div>
+
+        <!-- Infomation -->
+        <article class="col-right card">
+          <h2 id="main-topic">Profile</h2>
+          <p class="pid"></p>
+          <p class="indent-p">
+            สวัสดีครับทุกๆคน ผมชื่อนายศุภวิชญ์ ยุยงค์ อายุ 19 ปี ปัจจุบันเรียนอยู่ระดับชั้นปริญญาตรี
+            รหัสนักศึกษา 6804062662215 มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ วิทยาเขตกรุงเทพ
+            คณะวิทยาศาสตร์ประยุกต์ สาขาวิทยาการคอมพิวเตอร์หลักสูตรสองภาษา (CSB)
+            ตัวผมนั้นเรียนจบจากโรงเรียนเบญจมราชานุสรณ์ ระดับชั้นมัธยมศึกษาปีที่ 6 แผนการเรียนวิทยาศาสตร์ - คณิตศาสตร์
+            จบมาด้วยเกรดเฉลี่ยรวม 3.51
+          </p>
+          <p class="pid"></p>
+          <p class="indent-p">
+            งานอดิเรกคือวาดรูป, เล่นเกมและเปียโน และสนใจการเขียนโปรแกรมอย่างมาก
+            เป้าหมายคือเป็น UX/UI, Web/Application Developer และศึกษา Machine Learning เพื่อใช้ในอนาคต
+          </p>
+
+          <figure class="inline-photo">
+            <img src="/image/profile3.jpeg" alt="Suphawit (กำลังทำงาน)" width="300" height="200" loading="lazy" />
+          </figure>
+
+          <hr class="hairline" />
+          <p class="muted">
+            อัปเดตล่าสุดเมื่อ <time datetime="2025-09-27">27 กันยายน 2568</time>
+          </p>
+        </article>
+      </section>
+    </main>
+    <!-- End at here -->
+
+    <!-- Section Contact -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <address class="contact" aria-labelledby="contact-footer-title">
+          <h2 id="contact-footer-title" class="sr-only">Contact</h2>
+          <p>
+            <a href="mailto:tonklav10@gmail.com">Contact Email</a>
+            <span aria-hidden="true">|</span>
+            <a href="#" rel="me">Facebook</a>
+            <span aria-hidden="true">|</span>
+            <a href="#" rel="me">Line</a>
+          </p>
+        </address>
+
+        <small class="copyright">
+          &copy; <time datetime="2025">2025</time> Develop by Suphawit Yuyong
+        </small>
+      </div>
+    </footer>
+</body>
+</html>

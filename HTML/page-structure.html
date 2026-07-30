@@ -1,0 +1,229 @@
+<!Doctype html>
+<html lang="th">
+<head>
+      <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="For Fundamental of Computer" />
+    <meta name="author" content="Develop by Suphawit Yuyong (CSB)" />
+    <meta name="keywords" content="html, css, javascript, web" />
+    <title>Structure</title>
+
+    <link rel="stylesheet" href="/CSS/navbar.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="/CSS/structure.css">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <title>Website Structure</title>
+</head>
+
+<body>
+  <header>
+      <div class="top-head">
+        <h3>Kla Suphawit</h3>
+        <p>Computer Science (CSB)</p>
+      </div>
+      
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+          <i class='bx bx-menu' id="menuicon"></i>
+          <i class='bx bx-x' id="closeicon"></i>
+        </label>
+
+      <nav class="navbar">
+        <a class="link-text"  href="index.html" >Profile</a>
+        <a class="link-text"  href="page-video.html">Video Clip</a>
+        <a class="link-text"  href="page-blog.html">Blog Post</a>
+        <a class="link-text"  href="page-tools.html">Tools & Credit</a>
+        <a class="link-text"  href="page-structure.html">Website Structure</a>
+      </nav>
+  </header>
+
+  <main class="container">
+    <div id="top-space-last"></div>
+
+    <section class="grid">
+      <article class="card">
+        <h2>โครงสร้างของโปรเจกต์</h2>
+        <div id="tree" class="tree"></div>
+      </article>
+
+      <article class="card">
+        <h2>ไฟล์ที่ใช้ในแต่ละหน้า</h2>
+        <div id="pages" class="pages"></div>
+      </article>
+    </section>
+    <div id="bottom-space"></div>
+  </main>
+
+   <!-- Section Contact -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <address class="contact" aria-labelledby="contact-footer-title">
+          <h2 id="contact-footer-title" class="sr-only">Contact</h2>
+          <p>
+            <a href="mailto:tonklav10@gmail.com">Contact Email</a>
+            <span aria-hidden="true">|</span>
+            <a href="#" rel="me">Facebook</a>
+            <span aria-hidden="true">|</span>
+            <a href="#" rel="me">Line</a>
+          </p>
+        </address>
+
+        <small class="copyright">
+          &copy; <time datetime="2025">2025</time> Develop by Suphawit Yuyong
+        </small>
+      </div>
+    </footer>
+
+
+
+
+
+
+
+  <script>
+    /* ====== ข้อมูลอิงจากไฟล์ของโปรเจกต์ ====== */
+    const MANIFEST = {
+      project: "Suphawit Website",
+      tree: {
+        "/": {
+          "index.html": {},
+          "page-video.html": {},
+          "page-blog.html": {},
+          "page-tools.html": {},
+          "page-structure.html": {},
+          "CSS": {
+            "profile.css": {},
+            "video.css": {},
+            "blog.css": {},
+            "tools.css": {},
+            "navbar.css (referenced)": {},
+            "footer.css (referenced)": {}
+          },
+          "image (referenced)": {
+            "profile1.jpeg": {}, "profile2.jpeg": {}, "profile3.jpeg": {},
+            "projectHC2.png": {}, "projectHC.jpeg": {}, "pc-1.jpg.webp": {}
+          }
+        }
+      },
+      pages: [
+        {
+          file: "index.html",
+          title: "Profile",
+          uses: {
+            css: ["/CSS/navbar.css","/CSS/footer.css","/CSS/profile.css"],
+            js: [],
+            images: ["/image/profile1.jpeg","/image/profile2.jpeg","/image/profile3.jpeg","/image/projectHC2.png","/image/projectHC.jpeg"],
+            external: ["Boxicons CDN"]
+          }
+        },
+        {
+          file: "page-video.html",
+          title: "Video Clip",
+          uses: {
+            css: ["/CSS/navbar.css","/CSS/footer.css","/CSS/video.css"],
+            embeds: ["YouTube: tWJobQWGves"]
+          }
+        },
+        {
+          file: "page-blog.html",
+          title: "Blog Post",
+          uses: {
+            css: ["/CSS/navbar.css","/CSS/footer.css","/CSS/blog.css"],
+            images: [
+              "https://media.licdn.com/.webp",
+              "https://www.blognone.com/.webp",
+              "/image/pc-1.jpg.webp"
+            ]
+          }
+        },
+        {
+          file: "page-tools.html",
+          title: "Tools & Credit",
+          uses: {
+            css: ["/CSS/navbar.css","/CSS/footer.css","/CSS/tools.css"],
+            images: [
+              "Wikimedia: HTML5 logo",
+              "Wikimedia: CSS3 logo",
+              "Wikimedia: JavaScript logo"
+            ]
+          }
+        },
+        {
+          file: "page-structure.html",
+          title: "Website Structure",
+          uses: {
+            css: ["(Inline styles in this file)"], js: ["(Inline script)"]
+          }
+        }
+      ]
+    };
+
+    /* ---- DOM helpers ---- */
+    const el=(t,a={},...c)=>{const n=document.createElement(t);Object.entries(a).forEach(([k,v])=>(k in n)?n[k]=v:n.setAttribute(k,v));c.flat().forEach(x=>n.append(x?.nodeType?x:document.createTextNode(x)));return n;}
+
+    /* ---- Render folder tree ---- */
+    function renderNode(obj){
+      const ul=el("ul");
+      for(const [name,child] of Object.entries(obj)){
+        const li=el("li");
+        const isDir = child && Object.keys(child).length;
+        li.append(el("span",{className:"code"},name));
+        if(isDir) li.append(renderNode(child));
+        ul.append(li);
+      }
+      return ul;
+    }
+
+    /* ---- Render per-page assets ---- */
+    function part(label, arr){
+      if(!arr||!arr.length) return el("div");
+      const box=el("div",{className:"kv"});
+      box.append(el("b",{},label));
+      box.append(el("div",{className:"tags"},...(arr.map(x=>el("span",{className:"tag"},x)))));
+      return box;
+    }
+    function renderPages(list){
+      const wrap=el("div");
+      list.forEach((p,i)=>{
+        const d=el("details",{className:"page reveal", open:i<2});
+        const count=Object.values(p.uses||{}).reduce((a,arr)=>a+(arr?.length||0),0);
+        d.append(
+          el("summary",{},`${p.file} — ${p.title} `,el("span",{className:"pill"},`${count} items`)),
+          part("CSS",p.uses.css),
+          part("JS",p.uses.js),
+          part("Images",p.uses.images),
+          part("Embeds",p.uses.embeds),
+          part("External",p.uses.external)
+        );
+        wrap.append(d);
+      });
+      return wrap;
+    }
+
+    /* ---- Search filter ---- */
+    function setupSearch(){
+      const input=document.getElementById("search");
+      const root=document.getElementById("pages");
+      const all=MANIFEST.pages;
+      input.addEventListener("input",()=>{
+        const q=input.value.trim().toLowerCase();
+        const filtered=!q?all:all.filter(p=>{
+          const hay=[p.file,p.title,...(Object.values(p.uses||{}).flat())].join(" ").toLowerCase();
+          return hay.includes(q);
+        });
+        root.innerHTML=""; root.append(renderPages(filtered));
+      });
+    }
+
+    /* ---- Mount ---- */
+    window.addEventListener("DOMContentLoaded",()=>{
+      document.getElementById("tree").append(renderNode(MANIFEST.tree));
+      document.getElementById("pages").append(renderPages(MANIFEST.pages));
+      setupSearch();
+    });
+  </script>
+</body>
+</html>

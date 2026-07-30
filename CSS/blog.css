@@ -1,0 +1,237 @@
+/* ให้ body เป็นกรอบอ้างอิง */
+body{ position: relative; margin: 0; }
+
+/* พื้นหลังหลังสุดทั้งหน้าจอ */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;           /* อยู่หลังทุกอย่าง */
+  pointer-events: none;  /* กันไม่ให้บังการคลิก */
+  background: linear-gradient(#f4f9fc, #dce5f9);
+  min-height: 100dvh;    /* รองรับมือถือยุคใหม่ */
+}
+
+
+
+#top-space {
+    margin-top: 75px;
+}
+.source-note{
+    padding-top: 5%;
+}
+
+.content-link {
+    color: #428df6 !important;
+}
+
+:root {
+    --bg: #ffffff;
+    --fg: #0a0a0a;
+    --muted: #6b7280; 
+    --card: rgba(255, 255, 255, 0.613);  
+    --ring: #e5e7eb;  
+    --maxw: 1200px;
+    --radius: 16px;
+    --space: clamp(16px, 3vw, 28px);
+    --space-sm: clamp(10px, 2vw, 18px);
+    --space-lg: clamp(24px, 5vw, 48px);
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 6px 24px rgba(0,0,0,.06);
+}
+
+        /* Reset-ish */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+        margin: 0;
+        font-family:"Noto Sans Thai", sans-serif;
+        color: var(--fg);
+        background: var(--bg);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-size: clamp(15px, 1.2vw + 10px, 18px);
+        }
+        img { max-width: 100%; height: auto; display: block; border-radius: 12px; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover {
+          color: #7d8598;
+        }
+
+        /* ---------- Layout ----------*/
+        main.container {
+        max-width: var(--maxw);
+        margin-inline: auto;
+        padding: var(--space-lg) var(--space);
+        }
+
+        .grid {
+        display: grid;
+        gap: var(--space-lg);
+        /* Mobile-first: stack */
+        grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 900px) {
+        .grid {
+            /* Desktop: sidebar 300px + content */
+            grid-template-columns: 320px 1fr;
+            align-items: start;
+        }
+        }
+
+        /* ---------- (Aside) ---------- */
+        aside.sidebar {
+        position: relative;
+        }
+        @media (min-width: 900px) {
+        aside.sidebar {
+            position: sticky;
+            top: clamp(106px, 2vw, 24px);
+            height: fit-content;
+        }
+        }
+
+        .card {
+        background: var(--card);
+        border: 1px solid var(--ring);
+        border-radius: var(--radius);
+        padding: var(--space);
+        box-shadow: var(--shadow);
+        }
+
+        .sidebar h3 {
+        margin: 0 0 var(--space-sm) 0;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        font-size: clamp(18px, 1.2vw + 14px, 22px);
+        }
+        .list-clean { list-style: none; padding: 0; margin: 0; }
+        .list-clean li { margin: 6px 0; }
+        .list-clean a { display: inline-flex; align-items: center; gap: 8px; }
+        .list-clean a::after { content: '›'; opacity: .35; transition: transform .2s ease; }
+        .list-clean a:hover::after { transform: translateX(4px); }
+
+        /* ---------- Article Content ---------- */
+        section.content h2 {
+        margin: 0 0 var(--space) 0;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-size: clamp(22px, 1.4vw + 16px, 28px);
+        }
+
+        article.post {
+        background: var(--card);
+        border: 1px solid var(--ring);
+        border-radius: var(--radius);
+        padding: var(--space);
+        box-shadow: var(--shadow);
+        }
+
+        .post + .post { margin-top: var(--space-lg); }
+
+        .post strong { font-weight: 700; }
+        .post p { margin: 0 0 var(--space-sm) 0; color: var(--fg); }
+        .post i, .source-note { color: var(--muted); font-style: normal; }
+
+        /* Media blocks inside posts */
+        .media {
+        margin-top: var(--space-sm);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--ring);
+        }
+
+        /* Nice focus outlines */
+        :where(a, button, [tabindex]){
+        outline: 2px solid var(--link);
+        outline-offset: 2px;
+        border-radius: 8px;
+        }
+
+        /* Small helper spacing */
+        .mt-sm { margin-top: var(--space-sm); }
+        .mt-lg { margin-top: var(--space-lg); }
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Keyframes พื้นฐาน */
+@keyframes fadeIn { from {opacity:0} to {opacity:1} }
+@keyframes rise    { from {opacity:0; transform:translateY(12px)} to {opacity:1; transform:none} }
+@keyframes slideIn { from {opacity:0; transform:translateX(-14px)} to {opacity:1; transform:none} }
+@keyframes scaleIn { from {opacity:0; transform:scale(.98)} to {opacity:1; transform:scale(1)} }
+@keyframes lineGrow{ from {transform:scaleX(0); opacity:0} to {transform:scaleX(1); opacity:1} }
+
+/* เตรียม GPU นิด ๆ ให้ลื่น */
+main.container, .grid, .card, article.post, .media, .sidebar, .list-clean li {
+  will-change: opacity, transform;
+}
+
+main.container {
+  animation: fadeIn 560ms ease-out both;
+}
+
+.grid {
+  animation: scaleIn 600ms cubic-bezier(.2,.6,.2,1) both;
+  animation-delay: 60ms;
+}
+
+aside.sidebar .card {
+  animation: slideIn 680ms cubic-bezier(.2,.6,.2,1) both;
+  animation-delay: 120ms;
+}
+
+.list-clean li { opacity: 0; animation: rise 640ms cubic-bezier(.2,.6,.2,1) both; }
+.list-clean li:nth-child(1) { animation-delay: 180ms; }
+.list-clean li:nth-child(2) { animation-delay: 220ms; }
+.list-clean li:nth-child(3) { animation-delay: 260ms; }
+
+/* 4) เนื้อหาโพสต์หลัก เด้งขึ้นทีละบทความ */
+section.content h2 {
+  position: relative;
+  animation: rise 680ms cubic-bezier(.2,.6,.2,1) both;
+  animation-delay: 140ms;
+}
+
+article.post {
+  opacity: 0;
+  animation: rise 720ms cubic-bezier(.2,.6,.2,1) both;
+}
+article.post:nth-of-type(1) { animation-delay: 200ms; }
+article.post:nth-of-type(2) { animation-delay: 260ms; }
+article.post:nth-of-type(3) { animation-delay: 320ms; }
+
+/* 5) รูปในโพสต์ค่อย ๆ โผล่ */
+.post .media {
+  opacity: 0;
+  animation: rise 720ms cubic-bezier(.2,.6,.2,1) both;
+  animation-delay: 360ms;
+}
+
+/* 6) ปรับดีเลย์ให้ไวขึ้นบนจอแคบ (อ่านลื่นขึ้น) */
+@media (max-width: 900px){
+  .list-clean li:nth-child(1) { animation-delay: 120ms; }
+  .list-clean li:nth-child(2) { animation-delay: 160ms; }
+  .list-clean li:nth-child(3) { animation-delay: 200ms; }
+  article.post:nth-of-type(1) { animation-delay: 160ms; }
+  article.post:nth-of-type(2) { animation-delay: 200ms; }
+  article.post:nth-of-type(3) { animation-delay: 240ms; }
+}
+
+.sidebar{
+  transition: transform 220ms cubic-bezier(.2,.6,.2,1),
+              box-shadow 220ms cubic-bezier(.2,.6,.2,1);
+}
+
+.sidebar:hover{
+  transform: translateY(-2px);
+  box-shadow:
+    0 2px 0 rgba(39, 43, 56, 0.04),
+    0 16px 32px -14px rgba(39, 43, 56,0.22),
+    0 28px 68px -36px rgba(39, 43, 56,0.22);
+}
+

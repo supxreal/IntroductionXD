@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="For Fundamental of Computer" />
+    <meta name="author" content="Develop by Suphawit Yuyong (CSB)" />
+    <meta name="keywords" content="html, css, javascript, web" />
+    <title>Tools & Credit</title>
+
+    <link rel="stylesheet" href="/CSS/navbar.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="/CSS/tools.css">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+</head>
+<body>
+    <header>
+      <div class="top-head">
+        <h3>Kla Suphawit</h3>
+        <p>Computer Science (CSB)</p>
+      </div>
+      
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+          <i class='bx bx-menu' id="menuicon"></i>
+          <i class='bx bx-x' id="closeicon"></i>
+        </label>
+
+      <nav class="navbar">
+        <a class="link-text"  href="index.html" >Profile</a>
+        <a class="link-text"  href="page-video.html">Video Clip</a>
+        <a class="link-text"  href="page-blog.html">Blog Post</a>
+        <a class="link-text"  href="page-tools.html">Tools & Credit</a>
+        <a class="link-text"  href="page-structure.html">Website Structure</a>
+      </nav>
+    </header>
+
+    <!-- Start at here -->
+    <main>
+      <div id="top-space3"></div>
+      <section id="tools" aria-labelledby="tools-title">
+        <h2 id="tools-and-credit">Tools & Credit</h2>
+
+        <!-- Article DevTools -->
+        <article class="article-knowlegde" aria-labelledby="dev-tools-title">
+            <!-- Credit ภาษาที่ใช้ อยากให้ทำ Card slider ตรงนี้-->
+            <article id="atools" aria-labelledby="credit-title">
+                <!-- <h4 id="credit-title">ภาษาที่ใช้ในเว็ปไซต์นี้</h4> -->
+                <ul>
+                <li> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1024px-HTML5_logo_and_wordmark.svg.png?20170517184425" alt="">HTML5</li>
+                <p>ภาษาที่ใช้เป็นโครงสร้างหลักสำหรับสร้างเว็บไซต์</p>
+                <li> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/726px-CSS3_logo_and_wordmark.svg.png?20160530175649" alt="">CSS3</li>
+                <p>ภาษาที่ใช้ตกแต่งเว็บไซต์ให้สวยงาม</p>
+                <li> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png?20141107110902" alt="">JavaScript</li>
+                <p>ภาษาที่ใช้ทำกลไกให้เว็บไซต์ ดูน่าสนใจมากขึ้นเล็กน้อย</p>
+                </ul>
+            </article>
+            <!-- End Card slider -->
+      
+            <dl class="ul-tools">
+            <dt>Visual Studio Code</dt>
+            <dd>เครื่องมือหลักที่ใช้ในการพัฒนาเว็บไซต์และแก้ไขโค้ด โดยภาษาที่ใช้หลักๆได้แก่ HTML/CSS/JS
+                และยังติดตั้งส่วนขยายที่ช่วยในการทำเว็บง่ายขึ้นคือ Auto Close Tag, Auto Rename Tag และ Live Server สำหรับพรีวิว</dd>
+
+            <dt>Safari/Chrome DevTools</dt>
+            <dd>ใช้ตรวจสอบองค์ประกอบ (Elements) และใช้พรีวิวเว็บไซต์ว่าสามารถ Responsive ได้ขนานไหนแล้วถึงการ Console สำหรับดีบัก</dd>
+
+            <dt>Google Gemini</dt>
+            <dd>ช่วยอธิบายโค้ดว่าทำงานอย่างไร, ช่วยแก้บั๊ก, ช่วยออกแบบโครงสร้าง semantic HTML, CSS ให้เว็บไซต์ดีมากขึ้น</dd>
+            </dl>
+        </article>
+
+        <!-- Article Knowlegde/Learning -->
+        <article class="article-knowlegde" aria-labelledby="learning-title">
+            <h3 id="learning-title">Learning Resources</h3>
+            <ul class="ul-tools">
+            <li><a href="https://www.youtube.com/@KongRuksiamOfficial" target="_blank" rel="noopener noreferrer">KongRuksiamOfficial</a> 
+                — ช่องที่สอนและให้ความรู้เกี่ยวกับเนื้อหา HTML, CSS เบื้องต้น</li>
+            <li><a href="https://www.youtube.com/@MilerDev" target="_blank" rel="noopener noreferrer">MilerDev</a> 
+                — ช่องที่สอนและให้ความรู้เกี่ยวกับเนื้อหา JavaScript เบื้องต้น</li>
+            <li><a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer">w3schools</a> — มาตรฐานและแนวปฏิบัติ HTML</li>
+            </ul>
+        </article>
+      </section>
+    </main>
+
+    <!-- Section Contact -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <address class="contact" aria-labelledby="contact-footer-title">
+          <h2 id="contact-footer-title" class="sr-only">Contact</h2>
+          <p>
+            <a href="mailto:tonklav10@gmail.com">Contact Email</a>
+            <span aria-hidden="true">|</span>
+            <a href="#" rel="me">Facebook</a>
+            <span aria-hidden="true">|</span>
+            <a href="#" rel="me">Line</a>
+          </p>
+        </address>
+
+        <small class="copyright">
+          &copy; <time datetime="2025">2025</time> Develop by Suphawit Yuyong
+        </small>
+      </div>
+    </footer>
+</body>
+</html>

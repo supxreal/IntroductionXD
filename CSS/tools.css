@@ -1,0 +1,333 @@
+/* ให้ body เป็นกรอบอ้างอิง */
+body{ position: relative; margin: 0; }
+
+/* พื้นหลังหลังสุดทั้งหน้าจอ */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;           /* อยู่หลังทุกอย่าง */
+  pointer-events: none;  /* กันไม่ให้บังการคลิก */
+  background: linear-gradient(#f4f9fc, #dce5f9);
+  min-height: 100dvh;    /* รองรับมือถือยุคใหม่ */
+}
+
+#tools-and-credit {
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+#top-space3 {
+    margin-top: 80px;
+}
+/* ====== Apple-ish Responsive CSS for #tools ====== */
+/* สcope แค่ใน #tools เพื่อไม่ไปชนส่วนอื่นของเว็บ */
+#tools {
+  --fg: #0a0a0a;
+  --muted: #6b7280;
+  --card: #f6f7f8;
+  --ring: #e5e7eb;
+  --accent: #0071e3; /* ฟ้าแบบ Apple */
+  --radius: 16px;
+  --space: clamp(16px, 3vw, 28px);
+  --maxw: min(1200px, 92vw);
+  color: var(--fg);
+  background: var(--bg);
+  margin-inline: auto;
+  max-width: var(--maxw);
+  padding: var(--space);
+}
+
+#atools {
+  --radius: 1px !important;
+}
+        /* Reset-ish */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+        margin: 0;
+        font-family:"Noto Sans Thai", sans-serif;
+        color: var(--fg);
+        background: var(--bg);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-size: clamp(15px, 1.2vw + 10px, 18px);
+        }
+        img { max-width: 100%; height: auto; display: block; border-radius: 12px; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover {
+          color: #7d8598;
+        }
+
+#tools h2 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.2;
+  margin-bottom: clamp(12px, 2vw, 20px);
+  letter-spacing: -0.01em;
+}
+
+#tools h3 {
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+  line-height: 1.25;
+  margin: 1.25rem 0 .75rem;
+}
+
+/* ลิงก์แบบเรียบหรู */
+#tools a {
+  color: var(--accent);
+  text-decoration: none;           /* เอาเส้นใต้ลิงก์ออก */
+}
+#tools a:hover,
+#tools a:focus-visible {
+  text-decoration: underline;      /* ใต้เส้นเมื่อโฟกัส/โฮเวอร์ */
+  text-underline-offset: 2px;
+}
+
+/* ---------- Card Slider: ภาษาที่ใช้ในเว็บไซต์นี้ ---------- */
+/* เลือก ul ภายใต้บทความที่มีหัว credit-title */
+#tools article[aria-labelledby="credit-title"] ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+
+  /* ทริค grouping li + p เป็นคอลัมน์เดียวกัน โดยไม่แก้ HTML */
+  grid-auto-flow: column;
+  grid-template-rows: auto 1fr; /* แถวบน = หัวการ์ด (li), แถวล่าง = คำบรรยาย (p) */
+  grid-auto-columns: clamp(240px, 70vw, 320px);
+  gap: 0; /* ให้ขอบการ์ดชนกันสวย ๆ */
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  padding-bottom: 8px;
+  /* เงาไล่ขอบบอกใบ้ว่าลากได้ */
+  mask-image: linear-gradient(to right, transparent, black 32px, black calc(100% - 32px), transparent);
+}
+
+/* ซ่อน bullet และตั้งสไตล์การ์ดหัวข้อ (ไอคอน + ชื่อภาษา) */
+#tools article[aria-labelledby="credit-title"] li {
+  scroll-snap-align: start;
+  background: var(--card);
+  border: 1px solid var(--ring);
+  border-bottom: none;            /* ต่อกับ p ให้ดูเป็นใบเดียว */
+  border-radius: var(--radius) var(--radius) 0 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  padding: 14px 16px;
+
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ไอคอนภาษาในการ์ด */
+#tools article[aria-labelledby="credit-title"] li img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: saturate(1.05);
+}
+
+/* ตัวหนังสือภาษาใน li (เช่น "HTML5", "CSS3", "Javascript") */
+#tools article[aria-labelledby="credit-title"] li > *:not(img) {
+  font-weight: 600;
+  letter-spacing: .1px;
+}
+
+/* คำบรรยายที่ตามหลังแต่ละ li (ตรงตาม HTML เดิม li + p) */
+#tools article[aria-labelledby="credit-title"] li + p {
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid var(--ring);
+  border-top: none;               /* ต่อเป็นใบเดียวกับ li */
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 12px 16px 16px;
+  color: var(--muted);
+  line-height: 1.5;
+  min-height: 84px;               /* ให้สูงพอ ๆ กันเวลาสไลด์ */
+  display: block;
+}
+
+/* ระยะห่างรอบกลุ่มการ์ด */
+#tools article[aria-labelledby="credit-title"] {
+  margin-bottom: clamp(20px, 4vw, 36px);
+}
+
+/* สกอร์บาร์แบบบาง ๆ */
+#tools article[aria-labelledby="credit-title"] ul::-webkit-scrollbar {
+  height: 10px;
+}
+#tools article[aria-labelledby="credit-title"] ul::-webkit-scrollbar-thumb {
+  background: #e0ebfa;
+  border-radius: 999px;
+}
+#tools article[aria-labelledby="credit-title"] ul::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- Development Tools (dl) ให้ดูโปรและอ่านง่าย) ---------- */
+#tools dl {
+  background: #ffffff98;
+  border: 1px solid var(--ring);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  padding: clamp(12px, 2vw, 16px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px 16px;
+}
+
+#tools dt {
+  font-weight: 600;
+  margin: 0;
+}
+
+#tools dd {
+  margin: 0 0 8px 0;
+  color: var(--muted);
+  line-height: 1.6;
+  border-bottom: 1px dashed var(--ring);
+  padding-bottom: 12px;
+}
+#tools dd:last-of-type { border-bottom: none; }
+
+/* กว้างขึ้นแบ่งสองคอลัมน์แบบแอปเปิล ๆ */
+@media (min-width: 720px) {
+  #tools dl {
+    grid-template-columns: minmax(180px, 28%) 1fr;
+    align-items: start;
+  }
+  #tools dt { padding-top: 6px; }
+}
+
+/* ---------- Learning Resources เป็นการ์ดลิสต์สวย ๆ ---------- */
+#tools article[aria-labelledby="learning-title"] ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+#tools article[aria-labelledby="learning-title"] li {
+  background: #ffffff98;
+  border: 1px solid var(--ring);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  line-height: 1.6;
+}
+@media (min-width: 640px) {
+  #tools article[aria-labelledby="learning-title"] ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  #tools article[aria-labelledby="learning-title"] ul {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* ---------- ระยะห่าง/เลย์เอาต์รวม ---------- */
+#tools > article + article {
+  margin-top: clamp(18px, 3vw, 28px);
+}
+#tools p { margin: .25rem 0 .5rem; }
+
+/* ลด motion ถ้าผู้ใช้ตั้งค่า */
+@media (prefers-reduced-motion: reduce) {
+  #tools article[aria-labelledby="credit-title"] ul {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* ===== Entrance Animations (Page Load) — Apple-ish, no-JS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* เฟดอินทั้งบล็อก #tools ครั้งเดียวตอนโหลด */
+#tools {
+  animation: fadeIn .2s ease-out both;
+}
+
+/* ให้หัวข้อ/ข้อความ/การ์ด ค่อย ๆ โผล่ขึ้นมาทีละนิด */
+#tools h2,
+#tools h3,
+#tools p,
+#tools dt,
+#tools dd,
+#tools article[aria-labelledby="credit-title"] li,
+#tools article[aria-labelledby="learning-title"] li {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeUp .3s ease-out both;
+}
+
+/* ไล่ดีเลย์นิด ๆ ให้ดูมีจังหวะ */
+#tools h2 { animation-delay: .06s; }
+#tools article[aria-labelledby="dev-tools-title"] h3 { animation-delay: .1s; }
+
+/* ---- Card Slider: li กับ p คู่กัน (มี 3 ใบ = 6 ชิ้น) ---- */
+#tools article[aria-labelledby="credit-title"] ul > *:nth-child(1) { animation-delay: .12s; }
+#tools article[aria-labelledby="credit-title"] ul > *:nth-child(2) { animation-delay: .17s; }
+#tools article[aria-labelledby="credit-title"] ul > *:nth-child(3) { animation-delay: .22s; }
+#tools article[aria-labelledby="credit-title"] ul > *:nth-child(4) { animation-delay: .37s; }
+#tools article[aria-labelledby="credit-title"] ul > *:nth-child(5) { animation-delay: .32s; }
+#tools article[aria-labelledby="credit-title"] ul > *:nth-child(6) { animation-delay: .36s; }
+
+/* ---- Development Tools (dl) ---- */
+#tools dl > * { animation: fadeUp .6s ease-out both; }
+#tools dl > *:nth-child(1)  { animation-delay: .15s; }
+#tools dl > *:nth-child(2)  { animation-delay: .20s; }
+#tools dl > *:nth-child(3)  { animation-delay: .25s; }
+#tools dl > *:nth-child(4)  { animation-delay: .30s; }
+#tools dl > *:nth-child(5)  { animation-delay: .35s; }
+#tools dl > *:nth-child(6)  { animation-delay: .40s; }
+
+/* ---- Learning Resources (li 1–3) ---- */
+#tools article[aria-labelledby="learning-title"] li:nth-child(1) { animation-delay: .17s; }
+#tools article[aria-labelledby="learning-title"] li:nth-child(2) { animation-delay: .23s; }
+#tools article[aria-labelledby="learning-title"] li:nth-child(3) { animation-delay: .29s; }
+
+/* ลด motion ให้คนที่ตั้งค่าระบบไว้ */
+@media (prefers-reduced-motion: reduce) {
+  #tools, #tools * { animation: none !important; }
+}
+
+/* Cards appear together (no stagger) */
+#tools article[aria-labelledby="credit-title"] li,
+#tools article[aria-labelledby="credit-title"] li + p,
+#tools article[aria-labelledby="learning-title"] li {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeUp .3s ease-out both;
+  animation-delay: 0s !important; /* รีเซ็ตดีเลย์ให้เริ่มพร้อมกัน */
+}
+
+/* กันกรณีมี nth-child ดีเลย์เดิมอยู่ */
+#tools article[aria-labelledby="credit-title"] ul > * {
+  animation-delay: 0s !important;
+}
+
+
+.ul-tools {
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.067));
+  /* ถ้าอยากเพิ่มมิติอีกชั้น */
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.059))
+            drop-shadow(0 18px 32px rgba(0, 0, 0, 0.101));
+}
+
+.article-knowlegde {
+  margin: -0.9rem;
+  margin-bottom: 1rem;
+}
